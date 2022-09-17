@@ -6,6 +6,10 @@ project(psflib)
 file(GLOB sources ${PROJECT_SOURCE_DIR}/*.c)
 file(GLOB headers ${PROJECT_SOURCE_DIR}/*.h)
 
+find_package(ZLIB)
+
 # build library
 add_library(psflib STATIC ${sources} ${headers})
 set_property(TARGET psflib PROPERTY POSITION_INDEPENDENT_CODE ON)
+
+target_link_libraries(psflib ZLIB::ZLIB)
